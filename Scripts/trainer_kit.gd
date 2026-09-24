@@ -243,41 +243,47 @@ func _colorize_mnemonic(text: String) -> String:
 			out += ","
 	return out
 	
-
 func _refresh_disassembly_view() -> void:
 	var addr: int = cpu.PC
 	var max_lines := 30
+	var lines_shown := 0
 
-	var body := "[table=3]"
-	var any_lines := false
-
-	for i in range(max_lines):
+	var lines: Array[String] = []
+	while lines_shown < max_lines:
 		if not cpu.is_written(addr):
 			break
-		any_lines = true
 		var info: Dictionary = cpu.disassemble_at(addr)
-		var bytes_str := ""
-		for b in range(info.length):
-			bytes_str += "%02X " % cpu.read_byte((addr + b) & 0xFFFF)
+		var length: int = info.length
 
-		var addr_cell: String = "[color=#858585]%04X[/color]" % addr 
-		var bytes_cell: String = "[color=#6A9955]%s[/color]" % bytes_str 
-		var text_cell: String = _colorize_mnemonic(info.text)
+		for b in range(length):
+			if lines_shown >= max_lines:
+				break
+			var byte_addr: int = (addr + b) & 0xFFFF
+			var byte_val: int = cpu.read_byte(byte_addr)
+			var addr_cell: String = "[color=#858585]%04X[/color]" % byte_addr
+			var marker: String = "[color=#FFD700]>[/color] " if byte_addr == cpu.PC else "  "
 
-		if addr == cpu.PC:
-			addr_cell = "[color=#FFD700]>[/color] %s" % addr_cell
-		else:
-			addr_cell = "  %s" % addr_cell
+			if b == 0:
+				# First byte of the instruction: show the opcode byte,
+				# the mnemonic, and the byte-length tag.
+				var byte_cell: String = "[color=#6A9955]%02X[/color]" % byte_val
+				var text_cell: String = _colorize_mnemonic(info.text)
+				var length_label: String = "%dB" % length
+				var length_cell: String = "[color=#666666][%s][/color]" % length_label
+				lines.append("%s%s %s %s %s" % [marker, addr_cell, byte_cell, text_cell, length_cell])
+			else:
+				# Operand byte: just show the address and raw value, no mnemonic.
+				var byte_cell: String = "[color=#6A9955]%02X[/color]" % byte_val
+				lines.append("%s%s %s" % [marker, addr_cell, byte_cell])
 
-		body += "[cell]%s[/cell][cell]%s[/cell][cell]%s[/cell]" % [addr_cell, bytes_cell, text_cell]
-		addr = (addr + info.length) & 0xFFFF
+			lines_shown += 1
 
-	body += "[/table]"
+		addr = (addr + length) & 0xFFFF
 
-	if not any_lines:
-		body = "..."
-
-	disasm_view.text = body
+	if lines.is_empty():
+		disasm_view.text = "..."
+	else:
+		disasm_view.text = "\n".join(lines)
 
 
 func _on_reload_btn_pressed() -> void:

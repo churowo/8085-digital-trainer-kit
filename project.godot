@@ -11,17 +11,18 @@ config_version=5
 [application]
 
 config/name="8085 Trainer Kit"
-run/main_scene="uid://ujj7gqs1pdxx"
+run/main_scene="uid://u0bvo01g1wtl"
 config/features=PackedStringArray("4.7", "Forward Plus")
 config/icon="res://icon.svg"
 
 [display]
 
-window/size/viewport_width=1920
-window/size/viewport_height=1080
+window/size/viewport_width=1080
+window/size/viewport_height=1920
 window/size/mode=2
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
+window/handheld/orientation=1
 
 [physics]
 
