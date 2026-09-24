@@ -1,0 +1,307 @@
+[gd_scene format=3 uid="uid://ujj7gqs1pdxx"]
+
+[ext_resource type="Script" uid="uid://4r2fafnnw3j3" path="res://Scripts/trainer_kit.gd" id="1_wso8u"]
+[ext_resource type="Texture2D" uid="uid://qtupcivfv1o4" path="res://Assets/icons8-refresh-50.png" id="2_7lw34"]
+[ext_resource type="FontFile" uid="uid://cv144dlfjkxfi" path="res://Assets/Fonts/SpaceMono-Regular.ttf" id="2_gkdmm"]
+[ext_resource type="FontFile" uid="uid://dsb3elk2uhm2i" path="res://Assets/Fonts/Seven Segment.ttf" id="3_opg3t"]
+[ext_resource type="PackedScene" uid="uid://bnxxmi2dw868m" path="res://Scenes/custom_button.tscn" id="3_u4oto"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ad4rn"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7lw34"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[node name="TrainerKit" type="Control" unique_id=830674184]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_wso8u")
+
+[node name="Background" type="Panel" parent="." unique_id=866298342]
+self_modulate = Color(0.10747976, 0.10747973, 0.10747973, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="OutMargin" type="MarginContainer" parent="Background" unique_id=1268657840]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Splitter" type="HBoxContainer" parent="Background/OutMargin" unique_id=804597387]
+layout_mode = 2
+
+[node name="Left" type="MarginContainer" parent="Background/OutMargin/Splitter" unique_id=714548715]
+custom_minimum_size = Vector2(1200, 0)
+layout_mode = 2
+
+[node name="SplitterLeft" type="VBoxContainer" parent="Background/OutMargin/Splitter/Left" unique_id=1691120505]
+layout_mode = 2
+
+[node name="Display Panel" type="Panel" parent="Background/OutMargin/Splitter/Left/SplitterLeft" unique_id=370219741]
+self_modulate = Color(0.27387273, 0.27387273, 0.27387273, 1)
+custom_minimum_size = Vector2(1000, 130)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+
+[node name="DisplayContainer" type="HBoxContainer" parent="Background/OutMargin/Splitter/Left/SplitterLeft/Display Panel" unique_id=317269165]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -327.0
+offset_top = -51.5
+offset_right = 327.0
+offset_bottom = 51.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 0
+size_flags_vertical = 6
+theme_override_constants/separation = -269
+
+[node name="AddrDisplay" type="Label" parent="Background/OutMargin/Splitter/Left/SplitterLeft/Display Panel/DisplayContainer" unique_id=1643570442]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 100)
+layout_mode = 2
+size_flags_horizontal = 6
+theme_override_fonts/font = ExtResource("3_opg3t")
+theme_override_font_sizes/font_size = 98
+text = "4343"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="DataDisplay" type="Label" parent="Background/OutMargin/Splitter/Left/SplitterLeft/Display Panel/DisplayContainer" unique_id=1501844107]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 100)
+layout_mode = 2
+size_flags_horizontal = 6
+theme_override_fonts/font = ExtResource("3_opg3t")
+theme_override_font_sizes/font_size = 98
+text = "21"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Button Panel" type="Panel" parent="Background/OutMargin/Splitter/Left/SplitterLeft" unique_id=982582185]
+custom_minimum_size = Vector2(1100, 700)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Buttons" type="HBoxContainer" parent="Background/OutMargin/Splitter/Left/SplitterLeft/Button Panel" unique_id=2146693138]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -515.5
+offset_top = -277.5
+offset_right = 515.5
+offset_bottom = 277.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 0
+size_flags_vertical = 10
+theme_override_constants/separation = 31
+
+[node name="FunctionContainer" type="GridContainer" parent="Background/OutMargin/Splitter/Left/SplitterLeft/Button Panel/Buttons" unique_id=627142880]
+layout_mode = 2
+theme_override_constants/h_separation = 25
+theme_override_constants/v_separation = 25
+columns = 2
+
+[node name="Reset" parent="Background/OutMargin/Splitter/Left/SplitterLeft/Button Panel/Buttons/FunctionContainer" unique_id=785869785 instance=ExtResource("3_u4oto")]
+layout_mode = 2
+theme_override_font_sizes/font_size = 42
+text = "RESET"
+
+[node name="Go" parent="Background/OutMargin/Splitter/Left/SplitterLeft/Button Panel/Buttons/FunctionContainer" unique_id=119496622 instance=ExtResource("3_u4oto")]
+layout_mode = 2
+theme_override_font_sizes/font_size = 42
+text = "GO"
+
+[node name="Exreg" parent="Background/OutMargin/Splitter/Left/SplitterLeft/Button Panel/Buttons/FunctionContainer" unique_id=792442606 instance=ExtResource("3_u4oto")]
+layout_mode = 2
+theme_override_font_sizes/font_size = 42
+text = "EXREG"
+
+[node name="Exmem" parent="Background/OutMargin/Splitter/Left/SplitterLeft/Button Panel/Buttons/FunctionContainer" unique_id=1494420895 instance=ExtResource("3_u4oto")]
+layout_mode = 2
+theme_override_font_sizes/font_size = 42
+text = "EXMEM"
+
+[node name="Step" parent="Background/OutMargin/Splitter/Left/SplitterLeft/Button Panel/Buttons/FunctionContainer" unique_id=1207118091 instance=ExtResource("3_u4oto")]
+layout_mode = 2
+theme_override_font_sizes/font_size = 42
+text = "STEP"
+
+[node name="Exec" parent="Background/OutMargin/Splitter/Left/SplitterLeft/Button Panel/Buttons/FunctionContainer" unique_id=72097368 instance=ExtResource("3_u4oto")]
+layout_mode = 2
+theme_override_font_sizes/font_size = 42
+text = "EXEC"
+
+[node name="Prev" parent="Background/OutMargin/Splitter/Left/SplitterLeft/Button Panel/Buttons/FunctionContainer" unique_id=1536790470 instance=ExtResource("3_u4oto")]
+layout_mode = 2
+theme_override_font_sizes/font_size = 42
+text = "PREV"
+
+[node name="Next" parent="Background/OutMargin/Splitter/Left/SplitterLeft/Button Panel/Buttons/FunctionContainer" unique_id=1584723612 instance=ExtResource("3_u4oto")]
+layout_mode = 2
+theme_override_font_sizes/font_size = 42
+text = "NEXT"
+
+[node name="KeysContainer" type="GridContainer" parent="Background/OutMargin/Splitter/Left/SplitterLeft/Button Panel/Buttons" unique_id=187700279]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/h_separation = 25
+theme_override_constants/v_separation = 25
+columns = 4
+
+[node name="c" parent="Background/OutMargin/Splitter/Left/SplitterLeft/Button Panel/Buttons/KeysContainer" unique_id=604905390 instance=ExtResource("3_u4oto")]
+layout_mode = 2
+text = "C"
+
+[node name="d" parent="Background/OutMargin/Splitter/Left/SplitterLeft/Button Panel/Buttons/KeysContainer" unique_id=567059762 instance=ExtResource("3_u4oto")]
+layout_mode = 2
+text = "D"
+
+[node name="e" parent="Background/OutMargin/Splitter/Left/SplitterLeft/Button Panel/Buttons/KeysContainer" unique_id=942356827 instance=ExtResource("3_u4oto")]
+layout_mode = 2
+text = "E"
+
+[node name="f" parent="Background/OutMargin/Splitter/Left/SplitterLeft/Button Panel/Buttons/KeysContainer" unique_id=808294123 instance=ExtResource("3_u4oto")]
+layout_mode = 2
+text = "F"
+
+[node name="8" parent="Background/OutMargin/Splitter/Left/SplitterLeft/Button Panel/Buttons/KeysContainer" unique_id=145306731 instance=ExtResource("3_u4oto")]
+layout_mode = 2
+text = "8"
+
+[node name="9" parent="Background/OutMargin/Splitter/Left/SplitterLeft/Button Panel/Buttons/KeysContainer" unique_id=712465691 instance=ExtResource("3_u4oto")]
+layout_mode = 2
+text = "9"
+
+[node name="a" parent="Background/OutMargin/Splitter/Left/SplitterLeft/Button Panel/Buttons/KeysContainer" unique_id=1195471096 instance=ExtResource("3_u4oto")]
+layout_mode = 2
+
+[node name="b" parent="Background/OutMargin/Splitter/Left/SplitterLeft/Button Panel/Buttons/KeysContainer" unique_id=1317757374 instance=ExtResource("3_u4oto")]
+layout_mode = 2
+text = "B"
+
+[node name="4" parent="Background/OutMargin/Splitter/Left/SplitterLeft/Button Panel/Buttons/KeysContainer" unique_id=1751892334 instance=ExtResource("3_u4oto")]
+layout_mode = 2
+text = "4"
+
+[node name="5" parent="Background/OutMargin/Splitter/Left/SplitterLeft/Button Panel/Buttons/KeysContainer" unique_id=689428472 instance=ExtResource("3_u4oto")]
+layout_mode = 2
+text = "5"
+
+[node name="6" parent="Background/OutMargin/Splitter/Left/SplitterLeft/Button Panel/Buttons/KeysContainer" unique_id=2118250657 instance=ExtResource("3_u4oto")]
+layout_mode = 2
+text = "6"
+
+[node name="7" parent="Background/OutMargin/Splitter/Left/SplitterLeft/Button Panel/Buttons/KeysContainer" unique_id=386457713 instance=ExtResource("3_u4oto")]
+layout_mode = 2
+text = "7"
+
+[node name="0" parent="Background/OutMargin/Splitter/Left/SplitterLeft/Button Panel/Buttons/KeysContainer" unique_id=1095078950 instance=ExtResource("3_u4oto")]
+layout_mode = 2
+text = "0"
+
+[node name="1" parent="Background/OutMargin/Splitter/Left/SplitterLeft/Button Panel/Buttons/KeysContainer" unique_id=1726000416 instance=ExtResource("3_u4oto")]
+layout_mode = 2
+text = "1"
+
+[node name="2" parent="Background/OutMargin/Splitter/Left/SplitterLeft/Button Panel/Buttons/KeysContainer" unique_id=465954773 instance=ExtResource("3_u4oto")]
+layout_mode = 2
+text = "2"
+
+[node name="3" parent="Background/OutMargin/Splitter/Left/SplitterLeft/Button Panel/Buttons/KeysContainer" unique_id=1885822783 instance=ExtResource("3_u4oto")]
+layout_mode = 2
+text = "3"
+
+[node name="Right" type="MarginContainer" parent="Background/OutMargin/Splitter" unique_id=1177886109]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Panel" type="Panel" parent="Background/OutMargin/Splitter/Right" unique_id=116147641]
+self_modulate = Color(1, 0.7294118, 0.6862745, 1)
+custom_minimum_size = Vector2(700, 0)
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Background/OutMargin/Splitter/Right/Panel" unique_id=1991658604]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="DisassemblyView" type="RichTextLabel" parent="Background/OutMargin/Splitter/Right/Panel/MarginContainer" unique_id=1242508612]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("2_gkdmm")
+theme_override_font_sizes/normal_font_size = 40
+bbcode_enabled = true
+text = "2001 MVI"
+
+[node name="ReloadBtn" type="Button" parent="Background" unique_id=35108349]
+z_index = 28
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 0
+offset_left = 58.0
+offset_top = 25.0
+offset_right = 108.0
+offset_bottom = 75.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_styles/normal = SubResource("StyleBoxFlat_ad4rn")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxFlat_7lw34")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_7lw34")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxFlat_7lw34")
+theme_override_styles/hover = SubResource("StyleBoxFlat_7lw34")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxFlat_7lw34")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_7lw34")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxFlat_7lw34")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_7lw34")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxFlat_7lw34")
+theme_override_styles/focus = SubResource("StyleBoxFlat_7lw34")
+icon = ExtResource("2_7lw34")
+
+[connection signal="pressed" from="Background/OutMargin/Splitter/Left/SplitterLeft/Button Panel/Buttons/FunctionContainer/Reset" to="." method="press_reset"]
+[connection signal="pressed" from="Background/OutMargin/Splitter/Left/SplitterLeft/Button Panel/Buttons/FunctionContainer/Go" to="." method="press_go"]
+[connection signal="pressed" from="Background/OutMargin/Splitter/Left/SplitterLeft/Button Panel/Buttons/FunctionContainer/Exreg" to="." method="press_exam_reg"]
+[connection signal="pressed" from="Background/OutMargin/Splitter/Left/SplitterLeft/Button Panel/Buttons/FunctionContainer/Exmem" to="." method="press_exam_mem"]
+[connection signal="pressed" from="Background/OutMargin/Splitter/Left/SplitterLeft/Button Panel/Buttons/FunctionContainer/Step" to="." method="press_step"]
+[connection signal="pressed" from="Background/OutMargin/Splitter/Left/SplitterLeft/Button Panel/Buttons/FunctionContainer/Exec" to="." method="press_exec"]
+[connection signal="pressed" from="Background/OutMargin/Splitter/Left/SplitterLeft/Button Panel/Buttons/FunctionContainer/Prev" to="." method="press_prev"]
+[connection signal="pressed" from="Background/OutMargin/Splitter/Left/SplitterLeft/Button Panel/Buttons/FunctionContainer/Next" to="." method="press_next"]
+[connection signal="pressed" from="Background/ReloadBtn" to="." method="_on_reload_btn_pressed"]

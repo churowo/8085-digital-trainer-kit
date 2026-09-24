@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://bnxxmi2dw868m"]
+
+[ext_resource type="FontFile" uid="uid://b24liysmbaygt" path="res://Assets/Fonts/FiraSans-Regular.ttf" id="1_l3wwp"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oar5m"]
+bg_color = Color(0.14406255, 0.14406255, 0.14406249, 1)
+border_width_left = 8
+border_width_top = 8
+border_color = Color(0.61339027, 0.61339027, 0.61339027, 1)
+border_blend = true
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n4bg4"]
+bg_color = Color(0.14509805, 0.14509805, 0.14509805, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[node name="CustomButton" type="Button" unique_id=785869785]
+custom_minimum_size = Vector2(150, 120)
+offset_right = 8.0
+offset_bottom = 8.0
+theme_override_fonts/font = ExtResource("1_l3wwp")
+theme_override_font_sizes/font_size = 64
+theme_override_styles/normal = SubResource("StyleBoxFlat_oar5m")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxFlat_oar5m")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_n4bg4")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxFlat_n4bg4")
+theme_override_styles/hover = SubResource("StyleBoxFlat_oar5m")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxFlat_oar5m")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_oar5m")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxFlat_oar5m")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_oar5m")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxFlat_oar5m")
+theme_override_styles/focus = SubResource("StyleBoxFlat_oar5m")
+text = "A"
