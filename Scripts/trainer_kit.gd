@@ -4,7 +4,7 @@ enum State { IDLE, ENTERING_ADDR, EDITING_DATA, EXAMINING_REG, ENTERING_EXEC_ADD
 
 var cpu: CPU8085 = CPU8085.new()
 var current_state: State = State.IDLE
-
+var blink_tween: Tween
 var active_addr: int = 0x2000
 var addr_buffer: String = ""
 var data_buffer: String = ""
@@ -30,8 +30,8 @@ func _ready() -> void:
 func update_displays() -> void:
 	match current_state:
 		State.IDLE:
-			label_addr.text = "%04X" % active_addr
-			label_data.text = "%02X" % cpu.read_byte(active_addr)
+			label_addr.text = "0000"
+			label_data.text = "00"
 
 		State.ENTERING_ADDR:
 			label_addr.text = addr_buffer.lpad(4, "-")
@@ -209,7 +209,7 @@ func press_reset() -> void:
 	reg_input_buffer = ""
 	exec_addr_buffer = ""
 	update_displays()
-
+	_blink_displays()
 
 
 func _colorize_mnemonic(text: String) -> String:
@@ -264,15 +264,13 @@ func _refresh_disassembly_view() -> void:
 			var marker: String = "[color=#FFD700]>[/color] " if byte_addr == cpu.PC else "  "
 
 			if b == 0:
-				# First byte of the instruction: show the opcode byte,
-				# the mnemonic, and the byte-length tag.
+
 				var byte_cell: String = "[color=#6A9955]%02X[/color]" % byte_val
 				var text_cell: String = _colorize_mnemonic(info.text)
 				var length_label: String = "%dB" % length
 				var length_cell: String = "[color=#666666][%s][/color]" % length_label
 				lines.append("%s%s %s %s %s" % [marker, addr_cell, byte_cell, text_cell, length_cell])
 			else:
-				# Operand byte: just show the address and raw value, no mnemonic.
 				var byte_cell: String = "[color=#6A9955]%02X[/color]" % byte_val
 				lines.append("%s%s %s" % [marker, addr_cell, byte_cell])
 
@@ -288,3 +286,15 @@ func _refresh_disassembly_view() -> void:
 
 func _on_reload_btn_pressed() -> void:
 	get_tree().reload_current_scene()
+
+
+func _blink_displays() -> void:
+	if blink_tween:
+		blink_tween.kill() 
+	label_addr.modulate.a = 0.0
+	label_data.modulate.a = 0.0
+	blink_tween = create_tween()
+	blink_tween.tween_interval(0.08)  
+	blink_tween.tween_callback(func():
+		label_addr.modulate.a = 1.0
+		label_data.modulate.a = 1.0)
