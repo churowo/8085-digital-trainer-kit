@@ -14,6 +14,8 @@ const REG_ORDER: Array[String] = ["PC", "SP", "A", "B", "C", "D", "E", "H", "L",
 var reg_index: int = 0
 var reg_input_buffer: String = ""
 
+
+
 @onready var label_addr: Label = %AddrDisplay
 @onready var label_data: Label = %DataDisplay
 @onready var keypad: GridContainer = %KeysContainer
@@ -21,6 +23,8 @@ var reg_input_buffer: String = ""
 
 
 func _ready() -> void:
+	label_addr.self_modulate = Color(2.0, 0.2, 0.15) # pick a bright multiple of your on_color
+	label_data.self_modulate = Color(2.0, 0.2, 0.15)
 	for child in keypad.get_children():
 		if child is Button and child.text.is_valid_hex_number(false) and child.text.length() == 1:
 			child.pressed.connect(func(): press_hex(child.text))
@@ -72,10 +76,6 @@ func press_hex(val: String) -> void:
 		State.ENTERING_ADDR:
 			if addr_buffer.length() < 4:
 				addr_buffer += val
-				if addr_buffer.length() == 4:
-					active_addr = ("0x" + addr_buffer).hex_to_int()
-					current_state = State.EDITING_DATA
-					data_buffer = ""
 			update_displays()
 
 		State.EDITING_DATA:
@@ -102,7 +102,7 @@ func press_hex(val: String) -> void:
 		State.IDLE, State.RUNNING:
 			pass
 
-
+	
 func press_exam_mem() -> void:
 	current_state = State.ENTERING_ADDR
 	addr_buffer = ""

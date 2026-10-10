@@ -2,13 +2,13 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://dsb3elk2uhm2i"
-path="res://.godot/imported/Seven Segment.ttf-29ebbdb959e7294ac16eaa36e4cd8f0e.fontdata"
+uid="uid://dl6ghv4ir46y4"
+path="res://.godot/imported/DSEG7Classic-Regular.ttf-9f010883a5a1ec0d210d855d10013bdf.fontdata"
 
 [deps]
 
-source_file="res://Assets/Fonts/Seven Segment.ttf"
-dest_files=["res://.godot/imported/Seven Segment.ttf-29ebbdb959e7294ac16eaa36e4cd8f0e.fontdata"]
+source_file="res://Assets/Fonts/DSEG7Classic-Regular.ttf"
+dest_files=["res://.godot/imported/DSEG7Classic-Regular.ttf-9f010883a5a1ec0d210d855d10013bdf.fontdata"]
 
 [params]
 
