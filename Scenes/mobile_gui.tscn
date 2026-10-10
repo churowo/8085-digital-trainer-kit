@@ -241,10 +241,6 @@ corner_radius_top_right = 8
 corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
 
-[sub_resource type="Environment" id="Environment_ad4rn"]
-background_mode = 3
-glow_enabled = true
-
 [node name="MobileUI" type="Control" unique_id=830674184]
 layout_mode = 3
 anchors_preset = 15
@@ -702,9 +698,6 @@ visible = false
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=628497873]
-environment = SubResource("Environment_ad4rn")
 
 [connection signal="pressed" from="Background/OutMargin/Splitter/Bottom/SplitterLeft/Button Panel/MarginContainer/Buttons/FunctionContainer/Reset" to="." method="press_reset"]
 [connection signal="pressed" from="Background/OutMargin/Splitter/Bottom/SplitterLeft/Button Panel/MarginContainer/Buttons/FunctionContainer/Go" to="." method="press_go"]
